@@ -11,12 +11,13 @@
 "parser": "@typescript-eslint/parser",
 "parserOptions": {
     "ecmaVersion": 11,
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": "./tsconfig.json"
 },
 "plugins": ["@typescript-eslint"],
 "rules": {
-    "@typescript-eslint/consistent-type-imports": ["error"]
-    // "@typescript-eslint/no-var-requires": 0
+    "@typescript-eslint/consistent-type-imports": ["error"],
+    "@typescript-eslint/no-var-requires": 0
 }
 }
   
