@@ -6,7 +6,9 @@ const reviewsSchema = mongoose.Schema({
     name: {type: String, required: true},
     rating: {type: Number, required: true},
     comment: {type: String, required: true}
-},{timestamps:true})
+},{
+    timestamps:true
+}).set('toJSON', {virtuals: true});
 
 const schema = mongoose.Schema({
     user : {
@@ -57,7 +59,8 @@ const schema = mongoose.Schema({
     },
 },{
     timestamps: true
-})
+}).set('toJSON', {virtuals: true});
+
 
 
 const Product = mongoose.model('Product',schema)

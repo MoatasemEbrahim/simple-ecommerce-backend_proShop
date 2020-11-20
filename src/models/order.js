@@ -42,7 +42,7 @@ const schema = mongoose.Schema({
 
 },{
     timestamps: true
-})
+}).set('toJSON', {virtuals: true});
 
 
 const Order = mongoose.model('Order',schema)
