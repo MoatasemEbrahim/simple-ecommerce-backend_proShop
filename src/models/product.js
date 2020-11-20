@@ -21,7 +21,7 @@ const schema = mongoose.Schema({
         required: true,
         unique: true
     },
-    img : {
+    image : {
         type: String,
     },
     brand : {
@@ -56,12 +56,12 @@ const schema = mongoose.Schema({
         type: Number,
         required: true,
         default: 0
-    },
+    }
 },{
-    timestamps: true
-}).set('toJSON', {virtuals: true});
+    timestamps: true,
+}).set('toJSON', {virtuals: true})
 
-
+schema.virtual('imageURL').get(function() { return `/public/images/${this.image}`; })
 
 const Product = mongoose.model('Product',schema)
 

@@ -1,6 +1,6 @@
 import express from 'express'
 import dotEnv from 'dotenv'
-import cors from 'cors';
+import CORS from 'cors';
 import connectDB from './config/db';
 import productsRoutes from './routes/products';
 import {notFound,errorHandler} from './middleware/errorHandler';
@@ -8,7 +8,8 @@ dotEnv.config()
 const app = express();
 connectDB();
 
-app.use(cors());
+app.use(CORS());
+app.use('/public',express.static('public'))
 
 app.get('/',(_,res)=>{
     res.send('API is running ...')

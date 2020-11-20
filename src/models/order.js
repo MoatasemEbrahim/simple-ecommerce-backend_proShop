@@ -10,7 +10,7 @@ const schema = mongoose.Schema({
         {
             name: {type: String, required: true},
             quantity: {type: Number, required: true},
-            img: {type: String, required: true},
+            image: {type: String, required: true},
             price: {type: Number, required: true},
             product: {
                 type: mongoose.Schema.Types.ObjectId,
