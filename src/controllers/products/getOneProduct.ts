@@ -9,7 +9,11 @@ const getProducts = asyncHandler((req,res) => {
             const productWithImgURL = {...product,imageURL: `http://${host}${product.imageURL}`}
             res.json(productWithImgURL)
         }else{
-            throw new Error('Product not fount')
+            res.status(404);
+            res.json({
+                message: process.env.NODE_ENV !== 'production' ? err.message : 'Product not fount',
+                stack: process.env.NODE_ENV !== 'production' ? err.stack : null
+            })
         }
     })
 })
