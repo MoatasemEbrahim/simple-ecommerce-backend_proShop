@@ -11,7 +11,11 @@ const getProducts = asyncHandler((req,res) => {
             })
             res.json(productsWithImgURL)
         }else{
-            throw new Error('Something went wrong while getting products')
+            res.status(404);
+            res.json({
+                message: process.env.NODE_ENV !== 'production' ? err.message : 'Something went wrong while getting products',
+                stack: process.env.NODE_ENV !== 'production' ? err.stack : null
+            })
         }
     })
 })
