@@ -1,8 +1,7 @@
 import mongoose from 'mongoose';
 
 
-const reviewsSchema = mongoose.Schema({
-    required: false,
+const reviewsSchema = new mongoose.Schema({
     name: {type: String, required: true},
     rating: {type: Number, required: true},
     comment: {type: String, required: true}
@@ -10,7 +9,7 @@ const reviewsSchema = mongoose.Schema({
     timestamps:true
 }).set('toJSON', {virtuals: true});
 
-const schema = mongoose.Schema({
+const schema = new mongoose.Schema({
     user : {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -61,7 +60,7 @@ const schema = mongoose.Schema({
     timestamps: true,
 }).set('toJSON', {virtuals: true})
 
-schema.virtual('imageURL').get(function() { return `/public/images/${this.image}`; })
+schema.virtual('imageURL').get(function(this:any) { return `/public/images/${this.image}`; })
 
 const Product = mongoose.model('Product',schema)
 
