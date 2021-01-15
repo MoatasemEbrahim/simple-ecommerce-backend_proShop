@@ -6,6 +6,7 @@ export interface UserDoc extends mongoose.Document {
     email:string,
     password: string,
     isAdmin?: boolean,
+    tokens?: string[], 
     matchPassword: (password:string)=>Promise<boolean>
 }
 
@@ -29,6 +30,9 @@ const schema = new mongoose.Schema({
         required: true,
         default: false
     },
+    tokens : [{
+        type: String,
+    }]
 },{
     timestamps: true
 }).set('toJSON', {virtuals: true});

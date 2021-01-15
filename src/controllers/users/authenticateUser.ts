@@ -12,8 +12,11 @@ const authenticateUser = asyncHandler((req,res) => {
         if(!err){
             const isPasswordMatched = await user?.matchPassword(password);
             if(user && isPasswordMatched){
-                const {id,name,isAdmin} = user.toJSON()
-                res.json({id,name,email,isAdmin,token:generateToken(id)})
+                const {id,name,isAdmin} = user
+                const token = generateToken(id) 
+                user.tokens = user.tokens ? [...user.tokens,token] : [token];
+                user.save()
+                res.json({id,name,email,isAdmin,token})
             }else{
                 res.status(401);
                 res.json({
