@@ -5,7 +5,7 @@ import asyncHandler from 'express-async-handler'
 // @access   private
 
 const unauthenticateUser = asyncHandler((req,res) => {
-    const token = req?.headers?.authorization?.split(' ')[1]
+    const token = req.token;
     const user = req.user;
     if(user && user.tokens.includes(token)){
         user.tokens = user.tokens.filter((userToken:string) => userToken !== token)

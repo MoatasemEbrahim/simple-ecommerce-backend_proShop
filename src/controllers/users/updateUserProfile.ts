@@ -18,7 +18,7 @@ const updateUserProfile = asyncHandler(async(req,res) => {
         const updatedUser = await user.save()
 
         const {id,name,email,isAdmin} = updatedUser.toJSON()
-        res.json({id,name,email,isAdmin,token:generateToken(id)})
+        res.json({id,name,email,isAdmin,token:req.token})
 
     }else{
         res.status(404)
