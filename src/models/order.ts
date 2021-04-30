@@ -33,7 +33,7 @@ const schema = new  mongoose.Schema({
         type :{
             id: {type: String, required: true},
             status: {type: String, required: true},
-            updateTime: {type: String, required: true},
+            updateTime: {type: Date, required: true},
             email: {type: String},
         },
         required: false
@@ -51,7 +51,43 @@ const schema = new  mongoose.Schema({
     timestamps: true
 }).set('toJSON', {virtuals: true});
 
+interface IProduct {
+    name: string,
+    quantity: number,
+    image: string,
+    price: number,
+    product: string,
+}
 
-const Order = mongoose.model('Order',schema)
+interface IShippingAddress {
+    address: string,
+    city: string,
+    postalCode: string,
+    country: string,
+}
+
+interface IPaymentResult {
+    id: string,
+    status: string,
+    updateTime: Date,
+    email: string,
+}
+interface IOrder extends mongoose.Document {
+    user : string,
+    items:IProduct[],
+    shippingAddress: IShippingAddress,
+    paymentResult?: IPaymentResult,
+    paymentMethod: string, 
+    itemsPrice: number,
+    taxPrice: number,
+    shippingPrice: number,
+    totalPrice: number,
+    isPaid: boolean,
+    paidAt?: Date,
+    isDelivered: boolean,
+    deliveredAt?: Date,
+}
+
+const Order = mongoose.model<IOrder>('Order',schema)
 
 export default Order;
