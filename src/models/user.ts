@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs'
 
-export interface UserDoc extends mongoose.Document {
+interface IUser extends mongoose.Document {
     name : string,
     email:string,
     password: string,
@@ -41,12 +41,12 @@ schema.methods.matchPassword = async function(password:string){
     return await bcrypt.compare(password,this.password)
 }
 
-schema.pre<UserDoc>('save', async function (next){
+schema.pre<IUser>('save', async function (next){
     if(!this.isModified('password')){ next() }
     const salt = await bcrypt.genSaltSync(10)
     this.password = await bcrypt.hash(this.password,salt)
 })
 
-const User = mongoose.model<UserDoc>('User',schema)
+const User = mongoose.model<IUser>('User',schema)
 
 export default User;

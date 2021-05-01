@@ -1,12 +1,12 @@
 import asyncHandler from 'express-async-handler'
-import usersModel from '../../models/user';
+import User from '../../models/user';
 
 // @desc    Fetch single user
 // @route    GET /api/users/:id
 // @access    Public
 
 const getOneUser = asyncHandler((req,res) => {
-    usersModel.findById(req.params.id).exec((err,user)=>{
+    User.findById(req.params.id).exec((err,user)=>{
         if(!err){
             res.json(user)
         }else{

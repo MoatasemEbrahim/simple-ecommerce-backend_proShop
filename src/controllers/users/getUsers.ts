@@ -1,12 +1,12 @@
 import asyncHandler from 'express-async-handler'
-import usersModel from '../../models/user';
+import User from '../../models/user';
 
 // @desc    Fetch all users
 // @route    GET /api/users
 // @access    Public
 
 const getUsers = asyncHandler((req,res) => {
-    usersModel.find().exec((err,users)=>{
+    User.find().exec((err,users)=>{
         if(!err){
             res.json(users)
         }else{
