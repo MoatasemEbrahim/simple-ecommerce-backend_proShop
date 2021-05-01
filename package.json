@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build && node build/index.js",
+    "start": "node build/index.js",
     "dev": "nodemon",
     "build": "rimraf ./build && tsc",
     "seed": "ts-node ./src/seeder.ts",
