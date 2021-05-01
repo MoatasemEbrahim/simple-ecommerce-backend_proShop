@@ -1,5 +1,4 @@
 import asyncHandler from 'express-async-handler'
-import generateToken from '../../utils/generateToken';
 
 // @desc     Update user profile
 // @route    Patch /api/users/profile
