@@ -6,8 +6,10 @@ import Order from '../../models/order';
 // @access   Private
 
 const createOrder = asyncHandler(async(req,res) => {
-    const {items,itemsPrice,taxPrice,shippingPrice,totalPrice,paymentMethod,shippingAddress} = req.body
+    const {items,itemsPrice,taxPrice,shippingPrice,paymentMethod,shippingAddress} = req.body
 
+    const totalPrice = parseFloat(itemsPrice) + parseFloat(shippingPrice) + parseFloat(taxPrice);
+    
     if(items && items.length > 0){
         const order = new Order({
             items,

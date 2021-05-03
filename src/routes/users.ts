@@ -1,28 +1,22 @@
 import express from 'express';
-import getUsers from '../controllers/users/getUsers';
-import getOneUser from '../controllers/users/getOneUser';
-import authenticateUser from '../controllers/users/authenticateUser';
-import unauthenticateUser from '../controllers/users/unauthenticateUser';
-import getUserProfile from '../controllers/users/getUserProfile';
-import updateUserProfile from '../controllers/users/updateUserProfile';
-import createUser from '../controllers/users/createUser';
+import UsersController from '../controllers/users'
 import protect from '../middleware/auth'
 
 const router = express.Router()
 
-router.get('/',getUsers)
+router.get('/',protect,UsersController.getUsers)
 
-router.post('/',createUser)
+router.post('/',UsersController.createUser)
 
-router.get('/profile',protect,getUserProfile)
+router.get('/profile',protect,UsersController.getUserProfile)
 
-router.patch('/profile',protect,updateUserProfile)
+router.patch('/profile',protect,UsersController.updateUserProfile)
 
-router.get('/unauthenticate',protect,unauthenticateUser)
+router.get('/unauthenticate',protect,UsersController.unauthenticateUser)
 
-router.get('/:id',getOneUser)
+router.get('/:id',protect,UsersController.getOneUser)
 
-router.post('/authenticate',authenticateUser)
+router.post('/authenticate',UsersController.authenticateUser)
 
 
 export default router;

@@ -7,7 +7,6 @@ import Order from '../../models/order';
 
 const updateOrderToPaid = asyncHandler(async(req,res) => {
     const {paymentResult} = req.body;
-    console.log(paymentResult)
     const order = await Order.findById(req.params.id)
     if(order && paymentResult){
         order.isPaid = true;

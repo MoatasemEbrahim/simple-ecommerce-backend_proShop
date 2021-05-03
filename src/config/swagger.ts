@@ -2,12 +2,15 @@ const options = {
     definition: {
       openapi: '3.0.0',
       info: {
-        title: 'Memo',
+        title: 'ProShop E-commerce',
         version: '1.0.0',
       },
+      servers: [{
+        url: '/api',
+      }]
     },
-    apis: ['./src/controllers/**/*.ts'], // files containing annotations as above
-    validatorUrl : null
+    apis: ['./src/swagger/index.yml','./src/routes/**/*.yml'], // files containing annotations as above
+    validatorUrl : null,
   };
 
 export default options;

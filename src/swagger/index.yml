@@ -1,0 +1,157 @@
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+
+  schemas:
+    User:
+      properties:
+        _id:
+          type: string
+          example: 5fe6846a898b7133664275ee
+        name:
+          type: string
+          example: Moatasem
+        email:
+          type: string
+          example: user@email.com
+        isAdmin:
+          type: boolean
+          example: false
+
+
+    Product:
+      properties:
+        _id:
+          type: string
+          example: 5fe6846a898b7133664275fr
+        rating: 
+          type: number
+          example: 4.5
+        numReviews: 
+          type: integer
+          format: int32
+          example: 12
+        price: 
+          type: number
+          example: 89.99
+        countInStock: 
+          type: integer
+          format: int32
+          example: 10
+        name: 
+          type: string
+          example: Airpods Wireless Bluetooth Headphones
+        image: 
+          type: string
+          example: airpods.jpg
+        description: 
+          type: string
+          example: Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working
+        brand: 
+          type: string
+          example: Apple
+        category: 
+          type: string
+          example: Electronics
+        user: 
+          type: string
+          example: 5fe6846a898b7133664275ee
+        reviews: 
+          type: array
+          items: 
+            type: object
+            properties: 
+              name: 
+                type: string
+                example: me
+              rating: 
+                type: number
+                example: 4.5
+              comment: 
+                type: string
+                example: ssss
+
+
+    Order:
+      properties:
+        _id:
+          type: string
+          example: 5fe6846a898b7133664275ee
+        itemsPrice: 
+          type: number
+          example: 599.99
+        taxPrice: 
+          type: number
+          example: 83.99860000000001
+        shippingPrice: 
+          type: integer
+          format: int32
+          example: 0
+        totalPrice: 
+          type: number
+          example: 683.9886
+        isPaid: 
+          type: boolean
+          example: false
+        paidAt:
+          type: string
+          example: Date Mon May 03 2021 23:56:26 GMT+0200 (Eastern European Standard Time)
+        isDelivered: 
+          type: boolean
+          example: false
+        deliveredAt:
+          type: string
+          example: Date Mon May 03 2021 23:56:26 GMT+0200 (Eastern European Standard Time)
+        items: 
+          type: array
+          items: 
+            type: object
+            properties: 
+              _id:
+                type: string
+                example: 609051218eeb0e517f1e8a79
+              name: 
+                type: string
+                example: iPhone 11 Pro 256GB Memory
+              image: 
+                type: string
+                example: http://localhost:5000/public/images/phone.jpg
+              price: 
+                type: number
+                example: 599.99
+              quantity: 
+                type: integer
+                format: int32
+                example: 1
+              product: 
+                type: string
+                example: 5fe6846b898b7133664275f2
+        paymentMethod: 
+          type: string
+          example: PayPal
+        shippingAddress: 
+          type: object
+          properties: 
+            address: 
+              type: string
+              example: asdas
+            postalCode: 
+              type: string
+              example: 12321
+            city: 
+              type: string
+              example: sdasd
+            country: 
+              type: string
+              example: asdasd
+        user: 
+          type: string
+          example: 60904430c401573f5084f6ad
+
+
+
