@@ -5,37 +5,6 @@ import Order from '../../models/order';
 // @route    GET /api/orders/:id
 // @access   Private
 
-/**
-* @openapi
-* tags:
-* - name: "Orders"
-*   description: "Everything about Orders"
-*/
-
-/**
-* @openapi
-* /orders/{orderId}:
-*   get:
-*    summary: "Get one order"
-*    description: ""
-*    operationId: "getOrder"
-*    consumes:
-*    - "application/json"
-*    tags:
-*    - "Orders"
-*    parameters:
-*    - name: "orderId"
-*      in: "path"
-*      description: "Order id"
-*      required: true
-*      type: "string"
-*    responses:
-*     200:
-*      description: "Object with the Order data"
-*     404:
-*      description: "Order not found"
-*/
-
 const getOneOrder = asyncHandler((req,res) => {
     Order.findById(req.params.id).populate('user','name email').exec((err,order)=>{
         if(!err){

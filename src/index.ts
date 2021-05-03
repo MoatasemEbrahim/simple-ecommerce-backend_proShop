@@ -10,7 +10,8 @@ import usersRoutes from './routes/users';
 import ordersRoutes from './routes/orders';
 import {notFound,errorHandler} from './middleware/errorHandler';
 import auth from './middleware/auth';
-dotEnv.config()
+
+dotEnv.config();
 const app = express();
 connectDB();
 
@@ -28,6 +29,7 @@ app.use('/api/orders',ordersRoutes)
 
 app.get('/api/config/paypal',auth,(_,res)=>res.send(process.env.PAYPAL_CLIENT_ID))
 const specs = swaggerJsdoc(swaggerOptions);
+
 app.use(
   "/docs",
   swaggerUi.serve,
